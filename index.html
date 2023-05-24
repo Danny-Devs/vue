@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="./reactivity.js"></script>
+  <title>Reactivity Deep Dive</title>
+</head>
+<body>
+  <h1>Hi</h1>
+  <script type="module">
+    import { Dep, effect } from './reactivity.js'
+
+    const count = new Dep()
+
+    effect(() => {
+      count.track()
+      console.log('effect run')
+    })
+
+    count.trigger()
+  </script>
+</body>
+</html>
